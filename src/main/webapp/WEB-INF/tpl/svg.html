@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" type="text/css"/>
+
+    <!--<script type="text/javascript" src="../../resources/jquery/jquery.min.js" th:src="@{/resources/jquery/jquery.min.js}"></script>-->
+    <!--<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>-->
+    <script type="text/javascript" src="../../resources/jquery/jquery.tools.min.js" th:src="@{/resources/jquery/jquery.tools.min.js}"></script>
+    <script type="text/javascript" src="../../resources/highcharts/highcharts.src.js" th:src="@{/resources/highcharts/highcharts.src.js}"></script>
+    <script type="text/javascript" src="../../resources/jquery/jquery.atmosphere.js" th:src="@{/resources/jquery/jquery.atmosphere.js}"></script>
+    <script type="text/javascript" src="../../resources/jquery/jquery.comet.js" th:src="@{/resources/jquery/jquery.comet.js}"></script>
+    <script type="text/javascript" src="../../resources/svg/svg.js" th:src="@{/resources/svg/svg.js}"></script>
+    <script type="text/javascript" src="../../resources/svg/svgExt.js" th:src="@{/resources/svg/svgExt.js}"></script>
+    <script type="text/javascript" src="../../resources/svg/endModelExt.js" th:src="@{/resources/svg/endModelExt.js}"></script>
+</head>
+<body style="margin: 0">
+<iframe onload="init()" id="svgFrame" src="../../resources/test2.svg"  th:src="@{'/resources/view/'+${viewPath}}"
+        width="100%" height="100%" style="border: none; position: absolute">
+</iframe>
+<button id="containerBtn" class="modalInput" rel="#container" style="display: none">Yes or no?</button>
+<!--<ul class="u-menu u-menu-gp u-menu-show">-->
+    <!--<li><a href="#">分组，右对齐</a></li>-->
+    <!--<li><a href="#">下拉式菜单项</a></li>-->
+    <!--<li><a href="#">下拉式菜单项</a></li>-->
+    <!--<li class="menusep"><span class="menuline"></span></li>-->
+    <!--<li><a href="#">下拉式菜单项</a></li>-->
+<!--</ul>-->
+<div id="facebox" class="facebox">
+</div>
+<script type="text/javascript">
+    $("#facebox").overlay({
+//        top: 100,
+        mask: {
+            color: '#fff',
+            loadSpeed: 200,
+            opacity: 0.5
+        },
+        closeOnClick: true,
+        load: false// 不自动打开
+    });
+</script>
+</body>
+</html>

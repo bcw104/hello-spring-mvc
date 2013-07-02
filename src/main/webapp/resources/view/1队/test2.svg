@@ -1,0 +1,32 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+
+ <g name="codeTest">
+  <title>Layer 1</title>
+  <rect id="svg_1" height="119" width="156" y="20" x="10" stroke-width="5" stroke="#000000" fill="#FF0000">
+   <se:animation-visibility blinking="true" hide="true">
+    <![CDATA[this.test]]>
+   </se:animation-visibility>
+   <se:action-script event="click">
+    <![CDATA[alert("you click me")]]>
+   </se:action-script>
+  </rect>
+  <text id="svg_2" x="200" y="50">abc
+   <se:animation-simple-text>
+    <![CDATA[this.test+""]]>
+   </se:animation-simple-text></text>
+  <text id="svg_3" x="250" y="50">abc
+   <se:animation-num-text pattern="2">
+    <![CDATA[this.numberText]]>
+   </se:animation-num-text></text>
+  <rect id="svg_4" height="82" width="75" y="200" x="287" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#FF0000"/>
+ </g>
+ <se:start-script>
+  <![CDATA[    $g.codeTest.test = true;
+    $g['codeTest']['numberText'] = 23;]]>
+ </se:start-script>
+ <se:loop-script>
+  <![CDATA[        $g['codeTest']['numberText'] = $g['codeTest']['numberText'] + 1;
+        $g.codeTest.test = $g['codeTest']['numberText'] % 10 < 5;]]>
+ </se:loop-script>
+</svg>
