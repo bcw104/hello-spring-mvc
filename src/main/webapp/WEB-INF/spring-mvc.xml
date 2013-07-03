@@ -38,7 +38,7 @@
     <!-- 定义thymeleaf模版引擎 -->
     <bean id="templateResolver"
           class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-        <property name="prefix" value="/WEB-INF/tpl/" />
+        <property name="prefix" value="/WEB-INF/tpf/" />
         <property name="suffix" value=".html" />
         <property name="templateMode" value="LEGACYHTML5" />
         <property name="cacheable" value="false" />
