@@ -31,7 +31,7 @@ public class HomeController {
         return "redirect:/index2.html";
     }*/
 
-    @RequestMapping("form")
+@RequestMapping("form")
      private String hello4(int a,int b){
         int c=0;
         c=a+b;
@@ -42,6 +42,11 @@ public class HomeController {
      private String hello3(){
         //System.out.println(a);
         //System.out.println(b);
+        return "redirect:/WEB-INF/tpl/hello3.html";
+    }
+
+    @RequestMapping("fanbo1")
+     public String hello4(){
         return "hello3";
     }
 
