@@ -24,12 +24,28 @@ public class HomeController {
         return "redirect:/index.html";
     }
 
-    @RequestMapping("form")
-    private String hello2(String username, String password) {
+   /* @RequestMapping("form")
+      private String hello2(String username, String password) {
         System.out.println(username);
         System.out.println(password);
         return "redirect:/index2.html";
+    }*/
+
+    @RequestMapping("form")
+     private String hello4(int a,int b){
+        int c=0;
+        c=a+b;
+        System.out.println(c+"===================================");
+        return "redirect:/index.html";
     }
+    @RequestMapping("fanbo")
+     private String hello3(){
+        //System.out.println(a);
+        //System.out.println(b);
+        return "hello3";
+    }
+
+
 
     @RequestMapping("hello")
     public String test(Model model) {
@@ -39,13 +55,23 @@ public class HomeController {
         return "hello";
     }
 
+//    @RequestMapping("json")
+//    @ResponseBody
+//    public Map<String, Object> getJson() {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("a", "1");
+//        map.put("b", 2);
+//        map.put("c", 4.0F);
+//        return map;
+//    }
     @RequestMapping("json")
     @ResponseBody
-    public Map<String, Object> getJson() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("a", "1");
-        map.put("b", 2);
-        map.put("c", 4.0F);
+    public Map<String,Object> getJson(){
+        Map<String,Object> map=new HashMap<>();
+        map.put("a",555);
+        map.put("b","1511");
+        map.put("c",0.2365);
+        map.put("d",4.0f);
         return map;
     }
 }
