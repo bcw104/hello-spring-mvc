@@ -45,7 +45,7 @@ public class NewController {
     System.out.println(name+"=======================");
     System.out.println(email+"=====================");
 
-    return "hello.html";
+    return "well1";
 
 }
 @RequestMapping("wel")
