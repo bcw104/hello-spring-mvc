@@ -12,9 +12,9 @@ import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
- * User: 范博
+ * User: 聂玉宽
  * Date: 13-7-3
- * Time: 下午1:04
+ * Time: 上午10:50
  * To change this template use File | Settings | File Templates.
  */
 
@@ -26,7 +26,7 @@ public class NewController {
     public String hello(){
          return "redirect:/well.html";
     }
-@RequestMapping("fanbo9")
+@RequestMapping("kaka")
     public String well(){
     return "wel";
 }
