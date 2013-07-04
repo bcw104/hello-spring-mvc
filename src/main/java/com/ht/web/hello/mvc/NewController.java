@@ -45,7 +45,7 @@ public class NewController {
     System.out.println(name+"=======================");
     System.out.println(email+"=====================");
 
-    return "redirect:/well.html";
+    return "hello.html";
 
 }
 @RequestMapping("wel")
