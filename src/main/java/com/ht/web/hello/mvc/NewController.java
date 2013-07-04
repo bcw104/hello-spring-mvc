@@ -28,7 +28,7 @@ public class NewController {
     }
 @RequestMapping("kaka")
     public String well(){
-    return "wel";
+    return "well";
 }
 @RequestMapping("json")
 @ResponseBody
