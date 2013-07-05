@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+用户列表：
+<div>
+    <a th:each="user : ${users}" href="users.html" th:href="@{/user/}+${user.username}" th:text="${user.name}"></a>
+</div>
+</body>
+</html>

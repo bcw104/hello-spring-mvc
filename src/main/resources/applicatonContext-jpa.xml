@@ -5,7 +5,9 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
@@ -17,7 +19,7 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
 		<property name="dataSource" ref="dataSource"/>
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
-		<property name="packagesToScan" value="com.ht.scada.**.entity, com.ht.scada.common.tag.type"/>
+		<property name="packagesToScan" value="com.ht.**.entity"/>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
@@ -35,7 +37,7 @@
     </bean>
 
 	<!-- Spring Data Jpa配置 -->
- 	<jpa:repositories base-package="com.ht.scada.**.dao"
+ 	<jpa:repositories base-package="com.ht.**.dao"
                       transaction-manager-ref="transactionManager"
                       entity-manager-factory-ref="entityManagerFactory"/>
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" />
@@ -103,48 +105,18 @@
 	<!-- local development环境 -->
 	<beans profile="development">
 		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/redis.properties,
-			        classpath*:/application.properties,
-          			  classpath*:/application.development.properties" />	
-          			  
-		<!-- DBCP连接池 -->
-        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-            <!-- 基本属性 url、user、password -->
-            <property name="url" value="${jdbc.url}" />
-            <property name="username" value="${jdbc.username}" />
-            <property name="password" value="${jdbc.password}" />
-            <!-- 配置初始化大小、最小、最大 -->
-            <property name="initialSize" value="${druid.initialSize}" />
-            <property name="minIdle" value="${druid.minIdle}" />
-            <property name="maxActive" value="${druid.maxActive}" />
-
-            <property name="testWhileIdle" value="false" />
-            <property name="testOnBorrow" value="false" />
-            <property name="testOnReturn" value="false" />
-            <!-- 配置监控统计拦截的filters -->
-            <property name="filters" value="stat,slf4j" />
-        </bean>
+			location="classpath*:/application.properties,
+          			  classpath*:/application.development.properties" />
+         	<jdbc:embedded-database id="dataSource" type="H2" />
 	</beans>
 	
 	<!-- functional test 环境 -->
 	<beans profile="functional">
 		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/redis.properties,
-			classpath*:/application.properties,
+			location="classpath*:/application.properties,
           			  classpath*:/application.functional.properties" />
-          			  
-		<!-- DBCP连接池 -->
-        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-            <!-- 基本属性 url、user、password -->
-            <property name="url" value="${jdbc.url}" />
-            <property name="username" value="${jdbc.username}" />
-            <property name="password" value="${jdbc.password}" />
-            <property name="testWhileIdle" value="false" />
-            <property name="testOnBorrow" value="false" />
-            <property name="testOnReturn" value="false" />
-            <!-- 配置监控统计拦截的filters -->
-            <property name="filters" value="stat,slf4j" />
-        </bean>
+
+        <jdbc:embedded-database id="dataSource" type="H2" />
 
 		<!-- 初始化数据表结构 -->
 		<!--<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">-->
@@ -155,8 +127,7 @@
 	<!-- unit test环境 -->
 	<beans profile="test">
 	 	<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/redis.properties,
-		    	classpath*:/application.properties,
+			location="classpath*:/application.properties,
           			  classpath*:/application.test.properties" />	
           			  
 		<!-- Simple连接池 -->
